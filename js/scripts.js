@@ -35,10 +35,10 @@ $(document).ready(function() {
     $("#new-addresses").append('<div class="new-address">' +
                                 '<div class="form-group">' +
                                 '<label for="new-type">Address Type</label>' +
-                                '<select id="new-type">' +
-                                  '<option value="home">Home</option>' +
-                                  '<option value="work">Work</option>' +
-                                  '<option value="mistress">Second Home</option>' +
+                                '<select class="new-type">' +
+                                  '<option value="Home">Home</option>' +
+                                  '<option value="Work">Work</option>' +
+                                  '<option value="Second Home">Second Home</option>' +
                                 '</select>' +
                                 '</div>' +
                                  '<div class="form-group">' +
@@ -68,7 +68,8 @@ $("form#new-contact").submit(function(event) {
       var inputtedStreet = $(this).find("input.new-street").val();
       var inputtedCity = $(this).find("input.new-city").val();
       var inputtedState = $(this).find("input.new-state").val();
-      var addressType = $(this).find("option.new-type").val();
+      var addressType = $(this).find(".new-type").val();
+      console.log("addressType");
 
       var newAddress = new Address(addressType, inputtedStreet, inputtedCity, inputtedState)
       newContact.addresses.push(newAddress);
@@ -78,7 +79,7 @@ $("form#new-contact").submit(function(event) {
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
     $(".contact").last().click(function() {
-      $("#show-contact").show();
+      $("#show-contact").fadeIn(1000);
 
       $("#show-contact h2").text(newContact.fullName());
       $(".first-name").text(newContact.firstName);
