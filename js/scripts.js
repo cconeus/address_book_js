@@ -78,7 +78,7 @@ $("form#new-contact").submit(function(event) {
 
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
-    $(".contact").last().click(function() {
+    $(".contact").last().hover(function() {
       $("#show-contact").fadeIn(1000);
 
       $("#show-contact h2").text(newContact.fullName());
